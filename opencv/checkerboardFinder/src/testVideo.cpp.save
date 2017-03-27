@@ -1,0 +1,15 @@
+#include "opecv2/core/core.hpp"
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
+int main(){
+	VideoCapture cap(0); //ouverture de la cam
+	if(!cap.isOpened()){
+		cout << "Erreur : impossible d'ouvrir la camera" << endl;
+		return -1;
+	}
+	nameWindow("Raw video", CV_WINDOW_AUTOSIZE);
+
+}

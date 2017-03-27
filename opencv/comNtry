@@ -1,0 +1,10 @@
+
+#!/bin/bash
+
+
+g++ -g `pkg-config --cflags --libs opencv` -o $1/$1_compiled $1/$1.c
+
+cd $1
+
+./$1_compiled
+

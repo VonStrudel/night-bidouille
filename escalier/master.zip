@@ -1,0 +1,37 @@
+<!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Coh@bit</title>
+</head>
+<body bgcolor="#ffffff">
+
+<center>
+<img src="logo-cohabit.jpg">
+</center>
+
+<h3>Bienvenue sur le r&eacute;seau informatique du FabLab de l'IUT de Bordeaux</h3>
+
+<p>
+Le r&eacute;seau informatique sur lequel vous vous connectez depuis le FabLab est le r&eacute;seau universitaire fran&ccedil;ais.
+</br>
+Vous &ecirc;tes tenus de respecter les r&egrave;gles d'utilisation.
+</p>
+
+<p>
+Pour acc&eacute;der &agrave; intnernet, vous devez :
+<ul>
+<li>signer la charte suivante : <a href="Charte-indivi-vf2012.pdf">Charte d'utilisation du r&eacute;seau universitaire</a></li>
+<li>disposez d'un compte NOMINATIF : faites-en la demande au responsable, muni de la charte sign&eacute;e</li>
+<li>suivre le mode d'emploi ci-dessous</li>
+</ul>
+</p>
+
+<div>
+Connexion Mode d'emploi :
+<ul>
+<li><a href="unix.html">Linux ou Mac OSX </a></li>
+<li><a href="windows.html">Windows</a></li>
+</ul>
+</div>
+</body>
+</html>
