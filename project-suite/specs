@@ -1,0 +1,8 @@
+> Project suite est un programme de gestion de projet de programmation
+> modulaire
+> Chaque module est défini par un "module.xml" contenant les infos relatives
+> a l'exécution de ce module par le "coordinateur"
+> Les modules pourront aussi contenir des daemons
+> Un "projet" managé par project-suite contiendra à sa racine un fichier "projet.dat"
+> permettant à project-suite de connaitre des informations relatives à l'utilisation
+> de chaque module dans le projet
