@@ -1,10 +1,27 @@
-project-suite
+TODO : 
+Kinect fun
+project-suite										0
 	e/d
 		encoder - ligne de commande
 		decoder - en permanence
 		ed installer - bash
 	todo
 
-double linked list
-n linked list (network/tree)
-file explorer
+double linked list									5
+n linked list (network/tree)								5
+file explorer										2
+
+
+IN PROGRESS : 
+Line finder
+	- Y tho?
+CheckerBot
+	- Checkerboard finder
+	- Checker player
+	- Da arm
+	- Da integration
+Neato lidar fun
+	- Serial link
+	- decoder
+	- [elec] motor control
+	- speed PID reg
