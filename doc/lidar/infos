@@ -25,3 +25,66 @@ d'alimentation (PWR) du LDS:
 	- Une version alimentée en PWR=3V3 (H_V_33 (pour HARDWARE VERSION 3V3)
 	- Une version alimentée en PWR=5V (H_V_5)
 
+- Le firmware du LDS existe en 3 versions : 
+	F_V_2.1 (firmware version 2.1) :
+		Utilisé dans les premiers H_V_33
+		Format de données différent des versions suivantes
+	F_V_2.4
+		Utilisé dans les  H_V_5 et les H_V_33 mises à jour
+		Format de données incompatible avec F_V_2.1
+		Format de données identique à F_V_2.6
+	F_V_2.6
+		Utilisé dans les  H_V_5 et les H_V_33 mises à jour
+		Format de données incompatible avec F_V_2.1
+		Format de données identique à F_V_2.4
+		Items du menu et du menu secret différent.
+
+--------------------------------------------------------------------------------------------------------------
+
+Distance minimum de vision : 15 cm
+Distance maximum de vision : ~6 m
+
+---------------------------------------------------------------------------------------------------------------
+
+Les formats de données. 
+
+- Format F_V_2.4 / F_V_2.6 : 
+Un tour complet fournira 90 packets de 4 lectures chacuns
+La longueur d'un packet est de 22 bytes
+Total : 360 lectures sur 1980 bytes
+
+Format d'un packet : 
+<start> <index> <speed_L> <speed_H> [Data 0] [Data 1] [Data 2] [Data 3] <checksum_L> <checksum_H>
+
+o start : toujours 0XFA
+o index : byte d'index des packets. Part de 0xA0 (packet 0, lecture 0 à 3) et termine en 0xF9 
+	(packet 89, lectures 356 à 359)
+o speed : deux bytes, little-endian. Représente la vitesse en 64eme de RPM
+o Data 0 à Data 3 : les 4 lectures, 4 bytes par lecture, suivant le format suivant : 
+	< bit 7 ------ bit 0 > 
+	`byte 0 : <distance 7:0>'
+	`byte 1 : <"invalid data" flag> <"strength warning" flag> <distance 13:8>`
+	`byte 2 : <signal strength 7:0>`
+	`byte 3 : <signal strength 15:8>`
+	
+	La distance est en mm, codée sur 14 bits (oklm)
+	Bit 7 du byte 1 est à 1 : la lecture etait impossible, le byte 0 contient un code d'erreur
+	Bit 6 du byte 1 est à 1 : le signal est trop faible pour que la lecture soit fiable
+o checksum : le checksum du packet, deux bytes. L'algorithme de calcul du checksum est le suivant : 
+	def checksum(data):
+ 	   """Compute and return the checksum as an int."""
+ 	   # group the data by word, little-endian
+ 	   data_list = []
+ 	   for t in range(10):
+ 	       data_list.append( data[2*t] + (data[2*t+1]<<8) )
+ 	
+ 	   # compute the checksum on 32 bits
+ 	   chk32 = 0
+ 	   for d in data_list:
+ 	       chk32 = (chk32 << 1) + d
+ 	
+    	# return a value wrapped around on 15bits, and truncated to still fit into 15 bits
+    	checksum = (chk32 & 0x7FFF) + ( chk32 >> 15 ) # wrap around to fit into 15 bits
+    	checksum = checksum & 0x7FFF # truncate to 15 bits
+    	return int( checksum )
+
