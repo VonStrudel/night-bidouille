@@ -1,0 +1,27 @@
+Le lidar NEATO XV-11 est un dispositif composé d'un moteur et d'un 
+capteur de distance laser. 
+
+- Le moteur est alimenté par un connecteur à deux pins : 
+	RED - PWR 
+	BLACK - GND 
+
+Dans tous les cas, le moteur a une tension nominale de 3V3 DC pour 
+une intensité nominale de 60mA et une vitesse de rotation de 240 rpm. 
+(vitesse sujette à diminution à cause de la poussière et des pwals) Dans 
+le flux de donné
+
+- Le capteur de distance laser (LDS - Laser Distance Sensor ) communique avec l'utilisateur par une liaison
+série  115000 Bauds 8 bits, no parity, 1 bit de stop (8N1) 
+Cette liaison série fonctionne dans _tous_ les cas en 3V3. 
+
+Pinout du LDS : 
+	RED	- PWR
+	BROWN	- LDS_RX
+	ORANGE	- LDS_TX
+	BLACK	- GND
+
+Il existe deux versions du lidar qui définissent la tension
+d'alimentation (PWR) du LDS:
+	- Une version alimentée en PWR=3V3 (H_V_33 (pour HARDWARE VERSION 3V3)
+	- Une version alimentée en PWR=5V (H_V_5)
+
